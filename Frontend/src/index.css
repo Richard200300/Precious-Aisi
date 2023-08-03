@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.filter_component {
+    overflow-y: scroll;
+}
+
+.filter_component::-webkit-scrollbar {
+    width: 3px; /* Adjust the width to make it smaller */
+  }
+  .filter_component::-webkit-scrollbar-thumb {
+    background-color: #878787; /* Customize the thumb color */
+    border-radius: 4px; /* Adjust the border radius to make it rounder */
+
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: #cec9c9; /* Customize the track color */
+  }
