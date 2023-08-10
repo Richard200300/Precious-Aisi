@@ -6,10 +6,8 @@ import Footer from '../components/footer'
 const page = () => {
   return (
     <section className='h-full p-0'>
-      <Header />
       <About_user />
       <Collaboration />
-      <Footer />
     </section>
   )
 }

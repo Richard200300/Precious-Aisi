@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import Header from "../components/header";
 import Banner from "../components/banner";
 import Search from "./component/search";
 import backToTop from "../assets/icons/back_to_top.svg";
 import Shop_products from "./component/shop_products";
 import Filter from "./component/filter";
-import Footer from "../components/footer";
-import Loading from "../components/loading";
 
 const Page = () => {
   const [hide_filter, setHide_filter] = useState(true);
@@ -41,7 +38,6 @@ const Page = () => {
 
   return (
     <div className="h-full p-0">
-      <Header />
       <Banner />
       <Search setHide_filter={setHide_filter} fetchData={fetchData} />
 
@@ -54,20 +50,16 @@ const Page = () => {
           }
         >
           <div className="relative">
-          {all_products.loading ? (
-              <Loading /> // Display the loading spinner
-            ) : (
-              <Shop_products
+          <Shop_products
                 hide_filter={hide_filter}
                 allProducts={all_products}
                 set_all_products={set_all_products}
               />
-            )}
           </div>
         </div>
         <div>
           {hide_filter && (
-            <div className="sticky top-5">
+            <div className="sticky top-10">
               <Filter fetchData={fetchData}/>
             </div>
           )}
@@ -87,7 +79,6 @@ const Page = () => {
           />
         </div>
       </section>
-      <Footer />
     </div>
   );
 };

@@ -6,7 +6,7 @@ import down from "../assets/icons/down.svg";
 import flag from "../assets/icons/flag.svg";
 const Header = () => {
   return (
-    <div className=" pt-[10px] uppercase">
+    <div className=" pt-[10px] uppercase sticky top-[-66px] z-10 bg-[url('./assets/images/bg_img.png')]">
       <section className=" flex justify-end py-[10px]">
         <div className="flex gap-6">
           <div className="flex w-[139px] cursor-pointer items-center gap-3 border-[1.5px] border-[#0B0B0B] px-[8px] py-[5px] font-[500] text-[#0B0B0B] ">
