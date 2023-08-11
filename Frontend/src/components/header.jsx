@@ -4,7 +4,7 @@ import header_logo from "../assets/icons/header_logo.svg";
 import globe from "../assets/icons/globe.svg";
 import down from "../assets/icons/down.svg";
 import flag from "../assets/icons/flag.svg";
-const Header = () => {
+const Header = ({setHideCart}) => {
   return (
     <div className=" pt-[10px] uppercase sticky top-[-66px] z-10 bg-[url('./assets/images/bg_img.png')]">
       <section className=" flex justify-end py-[10px]">
@@ -50,7 +50,9 @@ const Header = () => {
               wishlist <span className="">(0)</span>
             </p>
           </div>
-          <div className="flex min-w-[172px] cursor-pointer justify-center border-r-[1.5px] border-[#0B0B0B] px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#0B0B0B] text-[#]  max-lg:hidden">
+          <div className="flex min-w-[172px] cursor-pointer justify-center border-r-[1.5px] border-[#0B0B0B] px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#0B0B0B] text-[#]  max-lg:hidden" onClick={()=> {
+            setHideCart(prev =>  !prev)
+          }}>
             <p className="">
               cart <span className="">(0)</span>
             </p>

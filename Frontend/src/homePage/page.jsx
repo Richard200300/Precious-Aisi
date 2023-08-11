@@ -7,13 +7,15 @@ import Shop from "./components/shop";
 import Discover from "./components/discover";
 import Membership from "./components/membership";
 import Exclusive from "./components/exclusive";
+import SpecialCategory from "../components/specialCategory";
 import back_to_top from "../assets/icons/back_to_top.svg";
 const Page = () => {
+  const name = "new arrival"
   return (
     <div className=" h-full p-0 ">
       <Collection />
       <Banner />
-      <New_Arrival />
+      <SpecialCategory name={name}/>
       <Limited_collection />
       <Shop />
       <Discover />

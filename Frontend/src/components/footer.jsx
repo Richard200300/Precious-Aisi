@@ -25,7 +25,7 @@ const Footer = () => {
         <input
           type="email"
           placeholder="ENTER YOUR EMAIL ADDRESS"
-          className="w-full absolute bottom-[10px] outline-0 font-[600] text-[12px]/[16px] text-[#3C3C3C] px-5 bg-[url('./assets/images/bg_img.png')]"
+          className="w-full absolute bottom-[10px] outline-0 font-[600] text-[12px]/[16px] text-[#3C3C3C] px-5 bg-[transparent]"
         />
       </div>
       <div className="border-b-[1.5px] border-l-[1.5px] border-[#0B0B0B] h-[96px] uppercase relative pl-5">

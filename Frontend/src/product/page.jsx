@@ -3,36 +3,41 @@ import Axios from "axios";
 import { useParams } from "react-router-dom";
 import Product_detail from "./component/product_detail";
 import Banner from "../components/banner";
-import Confirmation from "./component/confirmation";
 import Cart from "../components/cart";
+import useFetch from "../components/useFetch";
+import SpecialCategory from "../components/specialCategory";
+
 const Page = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState({});
-  const [hideCart, ShowCart] = useState(false)
+  const [hideCart, ShowCart] = useState(false);
 
-  useEffect(() => {
-    fetchData();
-  }, [id]);
+  const apiUrl = `http://localhost:5000/api/products/${id}`;
+  const { data, isLoading, error } = useFetch(apiUrl);
 
-  async function fetchData() {
-    try {
-      const url = `http://localhost:5000/api/products/${id}`;
-
-      const response = await Axios.get(url);
-      setProduct(response.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  }
+   const name = 'you may also like'
 
   return (
     <div className=" h-full p-0">
       <Banner />
 
-      {hideCart && <Cart hideCart={hideCart} ShowCart={ShowCart}/>}
+      {hideCart && <Cart data={data} hideCart={hideCart} ShowCart={ShowCart} />}
+      <div className="my-4 text-center text-[20px] font-[600] text-[red]">
+      {error && error.message !== "canceled" && (
+          <div>
+            <p>{error.message}</p>
+            <p className="text-[13px]">{error.code}</p>
+          </div>
+        )}
+      </div>
+      {isLoading && <div>loading....</div>}
+      {data && (
+        <div className="">
 
-      {/* <Confirmation /> */}
-      <Product_detail id={id} product={product}   ShowCart={ShowCart}/>
+        <Product_detail id={id} data={data} ShowCart={ShowCart} />
+        <SpecialCategory name={name} />
+        </div>
+
+      )}
     </div>
   );
 };

@@ -1,71 +1,48 @@
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
+import React, { useState } from "react";
 import Banner from "../components/banner";
-import Search from "./component/search";
 import backToTop from "../assets/icons/back_to_top.svg";
-import Shop_products from "./component/shop_products";
+import ShopProducts from "./component/shop_products";
 import Filter from "./component/filter";
+import Search from "./component/search";
+import useFetch from "../components/useFetch";
 
 const Page = () => {
+  const [dynamicUrl, setDynamicUrl] = useState("products");
   const [hide_filter, setHide_filter] = useState(true);
-  const [all_products, set_all_products] = useState([]);
-  useEffect(() => {
-    fetchData("products/?limit=30");
-  }, []);
-  console.log(all_products)
+  const apiUrl = `http://localhost:5000/api/${dynamicUrl}`;
+  const { data, isLoading, error } = useFetch(apiUrl);
 
-  async function fetchData(product_data = "products/?limit=30") {
-    try {
-      const url =
-        product_data === "products/?limit=30"
-          ? "http://localhost:5000/api/products/?limit=30"
-          : `http://localhost:5000/api/products/${product_data}`;
-
-      const response = await Axios.get(url);
-      set_all_products(response.data);
-    } catch (error) {
-      console.error(
-        `Error fetching data${
-          product_data === "all"
-            ? " for all countries"
-            : ` for product_data ${product_data}`
-        }:`,
-        error,
-      );
-    }
-  }
-  const align = all_products?.products?.length <= 3 ? "items-start" : "";
+  const isShortList = data?.products?.length <= 3;
 
   return (
     <div className="h-full p-0">
       <Banner />
-      <Search setHide_filter={setHide_filter} fetchData={fetchData} />
+      <Search setDynamicUrl={setDynamicUrl}  setHide_filter={ setHide_filter}/>
+      <div className="my-4 text-center text-[20px] font-[600] text-[red]">
+        {error && error.message !== "canceled" && (
+          <div>
+            <p>{error.message}</p>
+            <p className="text-[13px]">{error.code}</p>
+          </div>
+        )}
+      </div>
+      
+      {isLoading && <div>Loading...</div>}
 
-      <section className={`flex flex-row-reverse justify-between ${align} `}>
-        <div
-          className={
-            hide_filter
-              ? "flex items-center justify-center"
-              : "m-auto flex items-center justify-center"
-          }
-        >
+      <section className={`flex flex-row-reverse justify-between ${isShortList ? "items-start" : ""}`}>
+        <div className={hide_filter ? "flex items-center justify-center" : "m-auto flex items-center justify-center"}>
           <div className="relative">
-          <Shop_products
-                hide_filter={hide_filter}
-                allProducts={all_products}
-                set_all_products={set_all_products}
-              />
+            {data && <ShopProducts hide_filter={hide_filter} data={data} />}
           </div>
         </div>
         <div>
           {hide_filter && (
             <div className="sticky top-10">
-              <Filter fetchData={fetchData}/>
+              <Filter setDynamicUrl={setDynamicUrl} />
             </div>
           )}
           <div>
             <div className="sticky top-0"></div>
-
             <div className="relative mt-[100px]"></div>
           </div>
         </div>

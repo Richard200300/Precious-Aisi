@@ -1,9 +1,11 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import cancel_cart from "../assets/icons/cancel_cart.svg";
 import collection_img_2 from "../assets/images/collection_img_2.png";
-const Cart = ({ hideCart, ShowCart }) => {
+const Cart = ({ setHideCart }) => {
+
   return (
-    <div className="sticky right-7 top-[40px] ml-auto z-20">
+    
+    <div className="sticky right-7 top-[45px] ml-auto nt-5 z-20">
       <div className="absolute  z-50 right-0 max-h-[85vh] w-[35vw] overflow-hidden bg-[url('./assets/images/bg_img.png')] p-5  uppercase shadow-[-7px_8px_30px_0px_#00000033] ">
 
      
@@ -20,7 +22,7 @@ const Cart = ({ hideCart, ShowCart }) => {
         </div>
         <div
           className="cursor-pointer"
-          onClick={() => ShowCart((prevCart) => !prevCart)}
+          onClick={()=> setHideCart(false)}
         >
           <img src={cancel_cart} alt="cancel_cart" />{" "}
         </div>
@@ -43,7 +45,7 @@ const Cart = ({ hideCart, ShowCart }) => {
                 135,000 NGN
               </p>
             </div>
-            <div className="">
+            <div className="" >
               <img
                 src={cancel_cart}
                 alt="cancel_cart"

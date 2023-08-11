@@ -3,22 +3,38 @@ import down from "../../assets/icons/down.svg";
 import up_button from "../../assets/icons/up_button.svg";
 import down_button from "../../assets/icons/down_button.svg";
 import img_border from "../../assets/icons/img_border.svg";
-const Product_detail = ({ product, ShowCart }) => {
+import Axios from "axios";
+const Product_detail = ({ data, ShowCart, }) => {
+  function handleSubmit() {
+    const cartItem = {
+        productId: data._id,
+        size: "lg",
+        quantity: 3
+    };
+
+    Axios.put(`http://localhost:5000/api/carts/`, cartItem)
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err));
+}
+
+
+  
     const [selectedImage, setSelectedImage] = useState(null);
 
     useEffect(() => {
-      if (product.images && product.images.length > 0) {
-        setSelectedImage(product.images[0]);
+      if (data.images && data.images.length > 0) {
+        setSelectedImage(data.images[0]);
       }
-    }, [product]);
+    }, [data]);
 
 
     const handleThumbnailClick = (img) => {
         setSelectedImage(img);
       };
     return (
-    <div className="mt-10 border-y-[1.5px] border-[#0B0B0B]  ">
-      {product ? (
+    <div className="mt-10 mb-20 border-y-[1.5px] border-[#0B0B0B]  ">
+
+      {data ? (
         <div className="flex items-start gap-5">
           <div className="gap flex basis-[12%] justify-center py-5">
             <div className="relative h-[84vh]">
@@ -34,9 +50,9 @@ const Product_detail = ({ product, ShowCart }) => {
               />
 
               <div className="mt-[100px] cursor-pointer">
-                {product.images?.map((img) => {
+                {data.images?.map((img, index) => {
                   return (
-                    <article className="relative m-[auto]  mt-7 h-[100px] w-[88px] max-md:h-[100%] max-md:w-[100%]">
+                    <article className="relative m-[auto]  mt-7 h-[100px] w-[88px] max-md:h-[100%] max-md:w-[100%]" key={index}>
                       <div className="flex h-[84.96px] w-[82px] items-center justify-center overflow-hidden max-md:h-[100%] max-md:w-[100%]"  onClick={() => handleThumbnailClick(img)}>
                         <img
                           src={`https://asis.blob.core.windows.net/asisimages/${img}`}
@@ -84,11 +100,11 @@ const Product_detail = ({ product, ShowCart }) => {
           </div>
           <div className="basis-[40%] py-5">
             <p className="mb-9 text-[32px]/[32px] font-[500] text-[#0B0B0B]">
-              /{product.name}
+              /{data.name}
             </p>
 
             <div className="mb-5 flex flex-wrap gap-x-5 gap-y-3">
-              {product.countInStock?.map((data) => {
+              {data.countInStock?.map((data) => {
                 return (
                   <div key={data.size}>
                     <p className="flex h-[37px] w-[96px] cursor-pointer items-center justify-center border-[1.5px] border-[#0B0B0B] text-[12px]/[16px] font-[500] uppercase text-[#0b0b0b]">
@@ -105,15 +121,18 @@ const Product_detail = ({ product, ShowCart }) => {
                 <p className="text-[#17A500]">12:01:43:20</p>
               </div>
               <p className="my-9 text-[14px]/[19.5px] font-[500] text-[#0B0B0B]">
-                {product.description}
+                {data.description}
               </p>
               <p className="my-3 w-full cursor-pointer bg-[#0B0B0B] py-4 text-center text-[12px]/[12px] font-[600] uppercase text-[#FFFFFF]" onClick={()=> {
-                ShowCart(prevCart => !prevCart)
+                handleSubmit()
                 
               }}>
-                add to cart- {product.price?.toLocaleString()} NGN
+                add to cart- {data.price?.toLocaleString()} NGN
               </p>
-              <p className="mb-3 w-full cursor-pointer border-[1.5px] border-[#0B0B0B] py-4 text-center text-[12px]/[12px] font-[600] uppercase text-[#0B0B0B]">
+              <p className="mb-3 w-full cursor-pointer border-[1.5px] border-[#0B0B0B] py-4 text-center text-[12px]/[12px] font-[600] uppercase text-[#0B0B0B]" onClick={()=> {
+                ShowCart(true)
+
+              }}>
                 add to wishlist
               </p>
               <div className="border-y-[1px] border-[#0B0B0B] text-[14px]/[24px] uppercase text-[#0B0B0B] ">

@@ -3,12 +3,12 @@ import down from "../../assets/icons/down.svg";
 import hidden_filter from "../../assets/icons/hidden_filter.svg";
 import search from "../../assets/icons/search.svg";
 
-const Search = ({ setHide_filter, fetchData }) => {
+const Search = ({ setHide_filter, setDynamicUrl }) => {
   const [name, setName] = useState("");
 
   function handleKeyPress(event) {
     if (event.key === "Enter") {
-      fetchData(`?name=${name}`);
+      setDynamicUrl(`products/?name=${name}`);
     }
   }
 
@@ -29,7 +29,7 @@ const Search = ({ setHide_filter, fetchData }) => {
           placeholder="SEARCH"
           onKeyPress={handleKeyPress}
           onChange={(event) => setName(event.target.value)}
-          className="w-full bg-[url('./assets/images/bg_img.png')] px-5 text-[14px]/[16px] font-[500] text-[#B0B0B0] outline-0"
+          className="w-full bg-[transparent] px-5 text-[14px]/[16px] font-[500] text-[#B0B0B0] outline-0"
         />
         <img
           src={search}
