@@ -2,8 +2,14 @@ import React from "react";
 import limited_img from "../../assets/images/limited_img.png";
 import img_border from "../../assets/icons/img_border.svg";
 import down_arrow from "../../assets/icons/down_arrow.svg";
+import { Link } from "react-router-dom";
 
 const Limited_collection = () => {
+  const superSpecialCategoryData = [
+    "pre-fall 2023",
+    "uncommon [limited time sale]",
+    "essentials 2023",
+  ];
   return (
     <section className="relative mt-[100px] flex items-start justify-between border-t-[1.5px] border-[#0B0B0B] pt-3 max-md:block">
       <article className="mt-6  h-[100%] basis-[52.5%] uppercase">
@@ -16,23 +22,23 @@ const Limited_collection = () => {
             </span>
           </p>
         </div>
-        <article className="absolute bottom-0 w-[52.5%] text-[16px]/[24px] font-[400] uppercase text-[#5C5C5C]">
-          <div className="flex cursor-pointer justify-between border-y-[1px] border-[#5C5C5C] py-2">
-            <p> pre-fall 2023</p>
-            <img src={down_arrow} alt="down_arrow" />
-          </div>
-          <div className="flex cursor-pointer justify-between border-b-[1px] border-[#5C5C5C] py-2">
-            <p>uncommon [limited time sale]</p>
-            <img src={down_arrow} alt="down_arrow" />
-          </div>
-          <div className="flex cursor-pointer justify-between border-b-[1px] border-[#5C5C5C] py-2">
-            <p> essentials 2023</p>
-            <img src={down_arrow} alt="down_arrow" />
-          </div>
+        <article className="absolute bottom-0 w-[52.5%] border-t-[1px] border-[#5C5C5C] text-[16px]/[24px] font-[400] uppercase text-[#5C5C5C]">
+          {superSpecialCategoryData.map((data, index) => {
+            return (
+              <div key={index}>
+                <Link to={`/superspecialcategory/${data}`}>
+                <div className="flex cursor-pointer justify-between border-b-[1px] border-[#5C5C5C] py-2">
+                  {data}
+                  <img src={down_arrow} alt="down_arrow" />
+                </div>
+                </Link>
+              </div>
+            );
+          })}
         </article>
       </article>
-      <article className="relative h-[632px] w-[470px] max-md:w-[100%] max-md:h-[100%]">
-        <div className="mt-[20px] flex h-[614px] w-[458px] items-center justify-center  max-md:w-[100%] max-md:h-[100%]">
+      <article className="relative h-[632px] w-[470px] max-md:h-[100%] max-md:w-[100%]">
+        <div className="mt-[20px] flex h-[614px] w-[458px] items-center justify-center  max-md:h-[100%] max-md:w-[100%]">
           <img
             src={limited_img}
             alt="limited_img"

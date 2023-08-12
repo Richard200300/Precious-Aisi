@@ -24,7 +24,7 @@ const Products = ({ name, price, collaborations, images }) => {
       <div className="mt-2 font-[600] uppercase">
         <p className="text-[16px]/[20px]">{name}</p>
         <div className="flex gap-4">{renderCollaborations()}</div>
-        <p className="text-[12px]/[16px] text-[#0B0B0B]">{price} ngn</p>
+        <p className="text-[12px]/[16px] text-[#0B0B0B]">{price?.toLocaleString()} ngn</p>
       </div>
     </div>
   );

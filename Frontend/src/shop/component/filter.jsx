@@ -1,8 +1,8 @@
 import React from "react";
 
-const FilterItem = ({ item, fetchData, lastItem }) => {
+const FilterItem = ({ item, setDynamicUrl, lastItem }) => {
   const handleItemClick = () => {
-    fetchData(`?${lastItem}=${item}`);
+    setDynamicUrl(`products/?${lastItem}=${item}`);
   };
 
   return (
@@ -18,7 +18,7 @@ const FilterItem = ({ item, fetchData, lastItem }) => {
   );
 };
 
-const Filter = ({ fetchData }) => {
+const Filter = ({ setDynamicUrl }) => {
   const miniData = [
     "shoes & slides",
     "Pants",
@@ -62,7 +62,7 @@ const Filter = ({ fetchData }) => {
             <li
               key={data}
               onClick={() => {
-                fetchData(`?category=${data}`);
+                setDynamicUrl(`products/?category=${data}`);
               }}
               className="my-2 cursor-pointer"
             >
@@ -81,9 +81,9 @@ const Filter = ({ fetchData }) => {
           </p>
           {items.map((item, index) => (
             <FilterItem
-              key={item}
+              key={index}
               item={item}
-              fetchData={fetchData}
+              setDynamicUrl={setDynamicUrl}
               lastItem={type.toLowerCase()}
             />
           ))}

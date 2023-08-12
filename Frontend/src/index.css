@@ -8,14 +8,19 @@
     overflow-y: scroll;
 }
 
-.filter_component::-webkit-scrollbar {
-    width: 3px; /* Adjust the width to make it smaller */
+::-webkit-scrollbar {
+    width: 3px;
+    height: 4px;
   }
-  .filter_component::-webkit-scrollbar-thumb {
-    background-color: #878787; /* Customize the thumb color */
-    border-radius: 4px; /* Adjust the border radius to make it rounder */
+::-webkit-scrollbar-thumb {
+    background-color: #878787;
+    border-radius: 4px; 
 
   }
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background-color: #cec9c9; /* Customize the track color */
+::-webkit-scrollbar-track {
+    background-color: #cec9c9;
   }
+
+::-webkit-autofill {
+background: red;
+}
