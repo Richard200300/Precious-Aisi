@@ -1,12 +1,13 @@
 import React,{useState, useEffect} from "react";
 import cancel_cart from "../assets/icons/cancel_cart.svg";
 import collection_img_2 from "../assets/images/collection_img_2.png";
+import down from "../assets/icons/down.svg"
 const Cart = ({ setHideCart }) => {
 
   return (
     
     <div className="sticky right-7 top-[45px] ml-auto nt-5 z-20">
-      <div className="absolute  z-50 right-0 max-h-[85vh] w-[35vw] overflow-hidden bg-[url('./assets/images/bg_img.png')] p-5  uppercase shadow-[-7px_8px_30px_0px_#00000033] ">
+      <div className="absolute  z-50 right-0 max-h-[85vh] w-[33vw] overflow-hidden bg-[url('./assets/images/bg_img.png')] p-5  uppercase shadow-[-7px_8px_30px_0px_#00000033] ">
 
      
       <div className="item-center relative flex justify-between border-b-[1.5px] border-[#0B0B0B] pb-12">
@@ -27,7 +28,7 @@ const Cart = ({ setHideCart }) => {
           <img src={cancel_cart} alt="cancel_cart" />{" "}
         </div>
       </div>
-      <div className="my-5 flex items-start justify-between">
+      <div className="my-5 flex gap-5 items-start justify-between  pb-4 border-b-[1.5px] border-[#0B0B0B] ">
         <div className=" h-[154px] w-[116px]">
           <img
             src={collection_img_2}
@@ -36,12 +37,12 @@ const Cart = ({ setHideCart }) => {
           />
         </div>
         <div className="w-[70%]">
-          <div className="flex items-start justify-between  border-[0.5px] border-b-[#0B0B0B] pb-3">
+          <div className="flex items-start justify-between  border-b-[0.5px] border-b-[#0B0B0B] pb-2">
             <div className="">
-              <p className="w-[212px] text-[14px]/[20px] font-[700]">
+              <p className="w-[212px] text-[14px]/[20px] font-[700] text-[#0B0B0B]">
                 OVERGROWTH CONVERTIBLE PANTS
               </p>
-              <p className="text-[11px]/[20px] font-[600] text-[#000000]">
+              <p className="text-[11px]/[20px] font-[600] text-[#000000] mt-2">
                 135,000 NGN
               </p>
             </div>
@@ -53,18 +54,27 @@ const Cart = ({ setHideCart }) => {
               />
             </div>
           </div>
-          <div className="">uygyugyu</div>
+          <div className=" flex w-full items-start justify-between mt-3">
+            <div className="font-[600] text-[11px]/[20px] text-[#000000]">
+              <p className="">greenish brow</p>
+              <p className="">size: l</p>
+            </div>
+            <div className=" flex items-center gap-1 font-[600] text-[#0B0B0B] text-[11px]/[16px]">
+            <p> q.ty:1</p> 
+            <img src={down} alt="down"/>
+            </div>
+          </div>
         </div>
       </div>
       <div className="mt-4 flex items-center justify-between text-[14px]/[20px] font-[700]">
         <p>Total</p>
         <p>270,000 NGN</p>
       </div>
-      <div className="mt-3 flex items-center justify-between border-[0.5px] border-b-[#0B0B0B] pb-4  text-[13px]/[20px] font-[500]">
+      <div className="mt-3 flex items-center justify-between border-b-[0.5px] border-b-[#0B0B0B] pb-4  text-[13px]/[20px] font-[500]">
         <p>shipping</p>
         <p>calculated at checkout</p>
       </div>
-      <div className="mt-5 flex items-center justify-center bg-[#0B0B0B] py-3 text-[16px]/[20px] font-[600] text-[#FFFFFF] cursor-pointer">
+      <div className="mt-5 flex items-center justify-center bg-[#0B0B0B] py-3 text-[14px]/[20px] font-[600] text-[#FFFFFF] cursor-pointer rounded-[7px]">
         checkout
       </div>
       </div>
