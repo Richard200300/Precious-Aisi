@@ -50,7 +50,10 @@ const Header = ({setHideCart}) => {
             </div>
           </div>
         </div>
-        <img src={header_logo} alt="header_logo" className="ml-5" />
+        <Link to="/homepage">
+        <img src={header_logo} alt="header_logo" className="ml-5 cursor-pointer" />
+        
+        </Link>
         <article className="flex">
           <div
             className="flex w-[174px] cursor-pointer justify-center border-x-[1.5px]

@@ -3,7 +3,7 @@ import down from "../../assets/icons/down.svg";
 import hidden_filter from "../../assets/icons/hidden_filter.svg";
 import search from "../../assets/icons/search.svg";
 
-const Search = ({ setHide_filter, setDynamicUrl }) => {
+const Search = ({ setHideFilter,hideFilter, setDynamicUrl }) => {
   const [name, setName] = useState("");
 
   function handleKeyPress(event) {
@@ -17,9 +17,9 @@ const Search = ({ setHide_filter, setDynamicUrl }) => {
       <div className="flex h-[37px] w-[145px] cursor-pointer items-center justify-center border-r-[1.5px] border-[#000000] uppercase text-[#0B0B0B]">
         <div
           className="flex justify-center gap-1"
-          onClick={() => setHide_filter((prevFilter) => !prevFilter)}
+          onClick={() => setHideFilter((prevFilter) => !prevFilter)}
         >
-          <p className="text-[14px]/[16px] font-[500]">hide filter</p>
+          <p className="text-[14px]/[16px] font-[500]">{hideFilter ? "hide filter": "show filter"}</p>
           <img src={hidden_filter} alt="hidden_filter" />
         </div>
       </div>

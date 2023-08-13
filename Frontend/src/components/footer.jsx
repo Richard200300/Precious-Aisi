@@ -11,7 +11,7 @@ import Twitter from "../assets/icons/Twitter.svg";
 
 const Footer = () => {
   return (
-    <div className="grid grid-cols-4 max-lg:grid-cols-2 border-[#0B0B0B] border-t-[1.5px] mt-10 max-md:block">
+    <div className="grid grid-cols-4 max-lg:grid-cols-2 border-[#0B0B0B] border-t-[1.5px]  max-md:block w-full mt-20" >
       <div className="uppercase border-b-[1.5px] border-[#0B0B0B]">
         <p className="w-[512px] font-[600] text-[20px]/[32px] mt-2 ml-3  max-lg:w-[70vw] ">
           /subsricb<em className="font-[400]" >e</em > to our n<em className="font-[400]" >e</em >wslett<em className="font-[400]" >e</em >r & be th

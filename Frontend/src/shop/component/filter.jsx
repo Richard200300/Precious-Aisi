@@ -52,7 +52,7 @@ const Filter = ({ setDynamicUrl }) => {
   ];
 
   return (
-    <section className="filter_component mt-5 h-[90vh] max-h-[] w-[292px] border-[1.5px] border-[#0B0B0B] bg-[url('./assets/images/bg_img.png')] px-5 pb-5 pt-10">
+    <section className="filter_component mt-5 overflow-y-scroll filter max-md:h-96 w-[292px] border-[1.5px] border-[#0B0B0B] bg-[url('./assets/images/bg_img.png')] px-5 pb-5 pt-10">
       <div>
         <p className="text-[14px]/[21px] font-[600] uppercase text-[#000000]">
           <em>Shop all </em>
@@ -67,6 +67,8 @@ const Filter = ({ setDynamicUrl }) => {
               className="my-2 cursor-pointer"
             >
               {data}
+              <span className="w-4 h-4 border border-black rounded-[50%]"></span>
+
             </li>
           ))}
         </ul>

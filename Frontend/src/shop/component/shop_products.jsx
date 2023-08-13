@@ -7,8 +7,9 @@ const ShopProducts = ({ data, hide_filter }) => {
 
   return (
     <section className="mt-5">
+<div className="flex justify-center items-center">
 
-      <div className={`grid ${gridColumns} gap-10`}>
+      <div className={`flex flex-wrap gap-10`}>
         {data.products?.map((product) => (
           <div key={product.name}>
             <Link to={`/product/${product._id}`}>
@@ -22,6 +23,8 @@ const ShopProducts = ({ data, hide_filter }) => {
           </div>
         ))}
       </div>
+      </div>
+
     </section>
   );
 };
