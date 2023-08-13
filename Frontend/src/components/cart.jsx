@@ -7,7 +7,7 @@ const Cart = ({ setHideCart }) => {
   return (
     
     <div className="sticky right-7 top-[45px] ml-auto nt-5 z-20">
-      <div className="absolute  z-50 right-0 max-h-[85vh] w-[30vw] overflow-hidden bg-[url('./assets/images/bg_img.png')] p-5  uppercase shadow-[-7px_8px_30px_0px_#00000033] ">
+      <div className="absolute  z-50 right-0 max-h-[85vh]  overflow-hidden bg-[url('./assets/images/bg_img.png')] p-5  uppercase shadow-[-7px_8px_30px_0px_#00000033] ">
 
      
       <div className="item-center relative flex justify-between border-b-[1.5px] border-[#0B0B0B] pb-12">

@@ -16,20 +16,16 @@ const Page = () => {
   const { data} = useFetch(apiUrl);
 
    const name = 'you may also like'
-
+   useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, []);
   return (
     <div className=" h-full p-0">
      {data ? <div>
-
-      
-
-      
       <Banner />
 
       {hideCart && <Cart data={data} hideCart={hideCart} ShowCart={ShowCart} />}
-      <div className="my-4 text-center text-[20px] font-[600] text-[red]">
-    
-      </div>
+      
       {data && (
         <div className="">
 

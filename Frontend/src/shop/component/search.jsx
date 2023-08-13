@@ -13,23 +13,23 @@ const Search = ({ setHideFilter,hideFilter, setDynamicUrl }) => {
   }
 
   return (
-    <section className="mt-8 flex items-center border-y-[1.5px] border-[#000000]">
-      <div className="flex h-[37px] w-[145px] cursor-pointer items-center justify-center border-r-[1.5px] border-[#000000] uppercase text-[#0B0B0B]">
+    <section className="mt-8 flex items-center border-y border-[#000000]">
+      <div className="flex h-10 px-5  cursor-pointer items-center justify-center border-r border-[#000000] uppercase text-[#0B0B0B]">
         <div
           className="flex justify-center gap-1"
           onClick={() => setHideFilter((prevFilter) => !prevFilter)}
         >
-          <p className="text-[14px]/[16px] font-[500]">{hideFilter ? "hide filter": "show filter"}</p>
+          <p className="text-sm font-medium">{hideFilter ? "hide filter": "show filter"}</p>
           <img src={hidden_filter} alt="hidden_filter" />
         </div>
       </div>
-      <div className="relative w-full basis-[80%] items-center gap-3 uppercase text-[#0B0B0B]">
+      <div className="relative w-full basis-[79%] items-center gap-3 uppercase text-[#0B0B0B]">
         <input
           type="text"
           placeholder="SEARCH"
           onKeyPress={handleKeyPress}
           onChange={(event) => setName(event.target.value)}
-          className="w-full bg-[transparent] px-5 text-[14px]/[16px] font-[500] text-[#B0B0B0] outline-0"
+          className="w-full bg-transparent px-5 text-sm font-medium text-[#B0B0B0] outline-0"
         />
         <img
           src={search}
@@ -37,9 +37,9 @@ const Search = ({ setHideFilter,hideFilter, setDynamicUrl }) => {
           className="absolute bottom-1 right-5 cursor-pointer"
         />
       </div>{" "}
-      <div className="flex h-[37px] w-[145px] cursor-pointer items-center justify-center border-l-[1.5px] border-[#000000] uppercase text-[#0B0B0B]">
+      <div className="flex h-10 px-5 cursor-pointer items-center justify-center border-l border-[#000000] uppercase text-[#0B0B0B]">
         <div className="flex justify-center gap-1">
-          <p className="text-[14px]/[16px] font-[500]">sort by</p>
+          <p className="text-sm font-medium">sort by</p>
           <img src={down} alt="down" />
         </div>
       </div>

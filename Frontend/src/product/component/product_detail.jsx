@@ -32,53 +32,53 @@ const Product_detail = ({ data, ShowCart, }) => {
         setSelectedImage(img);
       };
     return (
-    <div className="mt-10 mb-20 border-y-[1.5px] border-[#0B0B0B]  ">
+    <div className="mt-10 mb-20  h-full border-y product_container  border-[#0B0B0B]">
 
       {data ? (
         <div className="flex items-start gap-5">
-          <div className="gap flex basis-[12%] justify-center py-5">
-            <div className="relative h-[84vh]">
+          <div className="gap flex basis-7 justify-center py-5">
+            <div className="relative ">
               <img
                 src={up_button}
                 alt="up_button"
-                className="absolute top-[20px] ml-4  cursor-pointer"
+                className="absolute top-5 ml-4  cursor-pointer"
               />
               <img
                 src={down_button}
                 alt="down_button"
-                className="absolute bottom-[0px] ml-4  cursor-pointer"
+                className="absolute bottom-0 ml-4  cursor-pointer"
               />
 
-              <div className="mt-[100px] cursor-pointer">
+              <div className="mt-20 cursor-pointer">
                 {data.images?.map((img, index) => {
                   return (
-                    <article className="relative m-[auto]  mt-7 h-[100px] w-[88px] max-md:h-[100%] max-md:w-[100%]" key={index}>
-                      <div className="flex h-[84.96px] w-[82px] items-center justify-center overflow-hidden max-md:h-[100%] max-md:w-[100%]"  onClick={() => handleThumbnailClick(img)}>
+                    <article className="relative m-[auto]  flex justify-center items-start mt-7 h-20 bg-red-200 max-md:h-full max-md:w-full" key={index}>
+                      <div className=" h-[84.96px] w-[82px]  overflow-hidden max-md:h-full max-md:w-full"  onClick={() => handleThumbnailClick(img)}>
                         <img
                           src={`https://asis.blob.core.windows.net/asisimages/${img}`}
                           alt="collection_img"
-                          className=" ml-2 mt-[10px] h-[90%] w-[90%] object-cover object-top"
+                          className="h-full w-full object-cover object-top"
                         />
                       </div>
                       <img
                         src={img_border}
                         alt="img_border"
-                        className="absolute bottom-[0px] right-[0px] w-[17px]"
+                        className="absolute bottom-0 right-0 w-4"
                       />
                       <img
                         src={img_border}
                         alt="img_border"
-                        className="absolute top-[0px] w-[17px] rotate-[180deg]"
+                        className="absolute top-0 w-4 rotate-180"
                       />
                       <img
                         src={img_border}
                         alt="img_border"
-                        className="absolute right-[0px] top-[0px] w-[17px] rotate-[270deg]"
+                        className="absolute right-0 top-0 w-4 rotate-[270deg]"
                       />
                       <img
                         src={img_border}
                         alt="img_border"
-                        className="absolute bottom-[0px] w-[17px] rotate-[90deg]"
+                        className="absolute bottom-0 w-4 rotate-90"
                       />
                     </article>
                   );
@@ -87,19 +87,19 @@ const Product_detail = ({ data, ShowCart, }) => {
             </div>
           </div>
 
-          <div className="flex h-[100%] basis-[45%] items-center   justify-center border-x-[1.5px] border-[#0B0B0B] px-3 py-5 overflow-hidden">
+          <div className="flex  basis-[45%] items-cent justify-center border-x border-[#0B0B0B] px-3 py-5 overflow-hidden">
             {selectedImage && (
-              <div className="h-[85vh] w-[511px]">
+              <div className="product_img w-[511px]">
                 <img
                   src={`https://asis.blob.core.windows.net/asisimages/${selectedImage}`}
-                  className="h-[100%] w-[100%] object-cover object-top overflow-hidden"
+                  className="h-full w-full object-cover object-top overflow-hidden"
                  
                 />
               </div>
             )}
           </div>
           <div className="basis-[40%] py-5">
-            <p className="mb-9 text-[32px]/[32px] font-[500] text-[#0B0B0B]">
+            <p className="mb-9 text-3xl	 font-medium	 text-[#0B0B0B]">
               /{data.name}
             </p>
 
@@ -107,7 +107,7 @@ const Product_detail = ({ data, ShowCart, }) => {
               {data.countInStock?.map((data) => {
                 return (
                   <div key={data.size}>
-                    <p className="flex h-[37px] w-[96px] cursor-pointer items-center justify-center border-[1.5px] border-[#0B0B0B] text-[12px]/[16px] font-[500] uppercase text-[#0b0b0b]">
+                    <p className="flex h-[37px] w-[96px] cursor-pointer items-center justify-center border border-[#0B0B0B] text-xs font-medium	 uppercase text-[#0b0b0b]">
                       {" "}
                       {data.size}
                     </p>
@@ -116,27 +116,27 @@ const Product_detail = ({ data, ShowCart, }) => {
               })}
             </div>
             <div className="">
-              <div className="flex items-center justify-between  text-[16px]/[19.5px] font-[600]">
+              <div className="flex items-center justify-between  text-base font-semibold	">
                 <p className=" uppercase text-[#0B0B0B]">time</p>
                 <p className="text-[#17A500]">12:01:43:20</p>
               </div>
-              <p className="my-9 text-[14px]/[19.5px] font-[500] text-[#0B0B0B]">
+              <p className="my-9 text-sm font-medium	 text-[#0B0B0B]">
                 {data.description}
               </p>
-              <p className="my-3 w-full cursor-pointer bg-[#0B0B0B] py-4 text-center text-[12px]/[12px] font-[600] uppercase text-[#FFFFFF]" onClick={()=> {
+              <p className="my-3 w-full cursor-pointer bg-[#0B0B0B] py-4 text-center text-xs font-semibold	 uppercase text-[#FFFFFF]" onClick={()=> {
                 handleSubmit()
                 
               }}>
                 add to cart- {data.price?.toLocaleString()} NGN
               </p>
-              <p className="mb-3 w-full cursor-pointer border-[1.5px] border-[#0B0B0B] py-4 text-center text-[12px]/[12px] font-[600] uppercase text-[#0B0B0B]" onClick={()=> {
+              <p className="mb-3 w-full cursor-pointer border border-[#0B0B0B] py-4 text-center text-xs font-semibold	 uppercase text-[#0B0B0B]" onClick={()=> {
                 ShowCart(true)
 
               }}>
                 add to wishlist
               </p>
-              <div className="border-y-[1px] border-[#0B0B0B] text-[14px]/[24px] uppercase text-[#0B0B0B] ">
-                <div className="flex cursor-pointer items-center justify-between border-b-[1px] border-[#0B0B0B] py-2">
+              <div className="border-y border-[#0B0B0B] text-sm uppercase text-[#0B0B0B] ">
+                <div className="flex cursor-pointer items-center justify-between border-b border-[#0B0B0B] py-2">
                   <p>product details</p>
                   <img src={down} alt="down" />
                 </div>

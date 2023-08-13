@@ -3,7 +3,6 @@ import Products from "../../components/products";
 import { Link } from "react-router-dom";
 
 const ShopProducts = ({ data, hide_filter }) => {
-  const gridColumns = hide_filter ? "grid-cols-3" : "grid-cols-4";
 
   return (
     <section className="mt-5">

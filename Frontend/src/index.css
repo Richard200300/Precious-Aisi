@@ -21,9 +21,17 @@
  .filter_component {
     height: 80vh;
 }
-
+.product_img {
+  height: 80vh;
+}
 @media (min-height: 1000px) {
   .filter_component {
     height: 700px;
+}
+.product_img {
+  height: 500px;
+}
+.product_container {
+
 }
 } 

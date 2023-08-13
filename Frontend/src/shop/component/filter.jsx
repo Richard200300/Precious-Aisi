@@ -1,24 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
-const FilterItem = ({ item, setDynamicUrl, lastItem }) => {
+const FilterItem = ({ item, activeItems, setActiveItems, lastItem }) => {
+  const isActive = activeItems.includes(item);
+
   const handleItemClick = () => {
-    setDynamicUrl(`products/?${lastItem}=${item}`);
+    if (isActive) {
+      setActiveItems(activeItems.filter(activeItem => activeItem !== item));
+    } else {
+      setActiveItems([...activeItems, item]);
+    }
   };
 
   return (
     <label
-      className="my-2 flex cursor-pointer items-center gap-2"
+      className={`my-2 flex cursor-pointer items-center gap-2 ${
+        isActive ? "bg-blue-500 text-white" : ""
+      }`}
       onClick={handleItemClick}
     >
-      <input type="checkbox" className="cursor-pointer" />
-      <p className="w-[194px] text-[12px]/[16px] font-[500] text-[#0B0B0B]">
-        {item}
-      </p>
+      <input type="checkbox" className="cursor-pointer" checked={isActive} readOnly />
+      <p className="w-48 text-xs font-medium text-[#0B0B0B]">{item}</p>
     </label>
   );
 };
 
 const Filter = ({ setDynamicUrl }) => {
+  const [activeItems, setActiveItems] = useState([]);
   const miniData = [
     "shoes & slides",
     "Pants",
@@ -51,46 +58,62 @@ const Filter = ({ setDynamicUrl }) => {
     },
   ];
 
+  const generateFilterQuery = () => {
+    const filters = activeItems.map(item => `category=${item}`);
+    return filters.join("&");
+  };
+
+  const applyFilters = () => {
+    if (activeItems.length > 0) {
+      const query = generateFilterQuery();
+      setDynamicUrl(`products/?${query}`);
+    }
+  };
+
   return (
-    <section className="filter_component mt-5 overflow-y-scroll filter max-md:h-96 w-[292px] border-[1.5px] border-[#0B0B0B] bg-[url('./assets/images/bg_img.png')] px-5 pb-5 pt-10">
+    <section className="filter_component mt-5 overflow-y-scroll filter w-72 border border-[#0B0B0B] px-5 pb-5 pt-10">
       <div>
-        <p className="text-[14px]/[21px] font-[600] uppercase text-[#000000]">
+        <p className="text-sm font-semibold uppercase text-[#000000]">
           <em>Shop all </em>
         </p>
-        <ul className="border-b-[1px] border-[#878787] pb-5 text-[14px]/[21px] font-[600] uppercase text-[#878787]">
+        <ul className="border-b border-[#878787] pb-5 text-sm font-semibold uppercase text-[#878787]">
           {miniData.map((data) => (
             <li
               key={data}
+              className={`my-2 p-1 rounded cursor-pointer ${activeItems.includes(data) ? "bg-[#cec9c9]" : ""}`}
               onClick={() => {
-                setDynamicUrl(`products/?category=${data}`);
+                const updatedItems = activeItems.includes(data)
+                  ? activeItems.filter(item => item !== data)
+                  : [...activeItems, data];
+                setActiveItems(updatedItems);
+                const query = generateFilterQuery();
+                setDynamicUrl(`products/?${query}`);
               }}
-              className="my-2 cursor-pointer"
             >
               {data}
-              <span className="w-4 h-4 border border-black rounded-[50%]"></span>
-
             </li>
           ))}
         </ul>
       </div>
       {filterData.map(({ type, items }) => (
-        <div
-          key={type}
-          className="border-b-[1px] border-[#878787] pb-5 uppercase"
-        >
-          <p className="mt-5 text-[14px]/[21px] font-[600] uppercase text-[#000000]">
-            {type}
-          </p>
+        <div key={type} className="border-b border-[#878787] pb-5 uppercase">
+          <p className="mt-5 text-sm font-semibold uppercase text-[#000000]">{type}</p>
           {items.map((item, index) => (
             <FilterItem
               key={index}
               item={item}
-              setDynamicUrl={setDynamicUrl}
+              activeItems={activeItems}
+              setActiveItems={setActiveItems}
               lastItem={type.toLowerCase()}
             />
           ))}
         </div>
       ))}
+      {activeItems.length > 0 && (
+        <div className="mt-5 text-sm font-semibold uppercase text-white bg-blue-500 py-2 px-4 rounded cursor-pointer" onClick={applyFilters}>
+          Apply Filters
+        </div>
+      )}
     </section>
   );
 };

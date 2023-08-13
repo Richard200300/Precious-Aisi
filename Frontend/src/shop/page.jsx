@@ -15,9 +15,15 @@ const Page = () => {
   useEffect(() => {
     window.scrollTo(0, 0); 
   }, []);
+
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
   
-  const align = data.product < 3 ? "items-start" : ""
-  
+  const align = data?.products?.length <= 3 ? "items-start" : ""
   return (
     <div className="h-full p-0">
       {data ? (
@@ -28,8 +34,8 @@ const Page = () => {
             setHideFilter={setHideFilter}
             hideFilter={hideFilter}
           />
-          <div className="flex items-start  ">
-            <section className="`flex flex-row-reverse ${align} gap-10`">
+          <div className="">
+            <section className={`flex flex-row-reverse ${align}  gap-10`}>
               <div className="flex items-center justify-center">
                 <div className="relative flex items-center justify-center">
                   {data && (
@@ -45,16 +51,19 @@ const Page = () => {
                 )}
                 <div>
                   <div className="sticky top-0"></div>
-                  <div className="relative mt-[100px]"></div>
+                  <div className="relative mt-28"></div>
                 </div>
               </div>
             </section>
-            <section className=`products/?name=${name}`>
-              <div className="relative mt-[100px] border-t-[1.5px] border-[#0B0B0B]">
+            <section className="">
+              <div className="relative mt-28 border-t border-[#0B0B0B]">
                 <img
                   src={backToTop}
                   alt="back_to_top"
-                  className="absolute right-[10%] top-[-25px] cursor-pointer"
+                  className="absolute right-10 -top-7 cursor-pointer"
+                  onClick={()=> {
+                    handleScrollToTop()
+                  }}
                 />
               </div>
             </section>

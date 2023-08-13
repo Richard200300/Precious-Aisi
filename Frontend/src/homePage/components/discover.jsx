@@ -3,28 +3,28 @@ import discover_img from "../../assets/images/discover_img.png";
 
 const Discover = () => {
   return (
-    <section className=" mt-[50px] flex justify-end pt-3 max-md:block">
-      <article className="relative text-[64px]/[64px] font-[400] uppercase ">
-        <p className=" mr-3 w-[375px] text-right">
-          <span className="mr-1 font-[300]">/</span>W
-          <em className="font-[300]">E</em> CRE<em className="font-[300]">a</em>
+    <section className=" mt-12 flex justify-end pt-3 max-md:block">
+      <article className="relative text-6xl	 font-normal uppercase ">
+        <p className=" mr-0 w-96 text-right">
+          <span className="-mr-1 font-light">/</span>W
+          <em className="font-light">E</em> CRE<em className="font-light">a</em>
           TE
         </p>
 
-        <p className="absolute left-[60%] w-[572px] max-md:w-full max-md:relative">
-          F<em className="font-[300]">a</em>SH
+        <p className="absolute left-2/3 w-[32rem] max-md:w-full max-md:relative">
+          F<em className="font-light">a</em>SH
           <span className="text-[#FFFFFF]">
-            I<em className="font-[300]">o</em>N AR
-            <em className="font-[300]">t</em> F<em className="font-[300]">o</em>
+            I<em className="font-light">o</em>N AR
+            <em className="font-light">t</em> F<em className="font-light">o</em>
             R
           </span>
         </p>
         <p className="absolute right-6 top-[125px]">
-          ev<em className="font-[300]">e</em>ry<em className="font-[300]">o</em>
+          ev<em className="font-light">e</em>ry<em className="font-light">o</em>
           ne
         </p>
         <div className="absolute bottom-0 right-6 flex h-[131px] w-[131px] items-center justify-center rounded-full bg-[#A67700] ">
-          <p className="br-[50%] text-[12px]/[20px] font-[600] text-[#FFFFFF]">
+          <p className="rounded-full text-xs font-semibold text-[#FFFFFF]">
             discover
           </p>
         </div>
