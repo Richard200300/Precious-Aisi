@@ -5,16 +5,16 @@ import emptyWish from "../assets/icons/empty_wish.svg";
 import down from "../assets/icons/down.svg";
 const Wishlist = ({ setHideWish, wishlistData }) => {
   return (
-    <div className="nt-5 sticky right-7 top-[45px] z-20 ml-auto">
+    <div className="nt-5 sticky right-7 top-11 z-20 ml-auto">
       <div className="absolute  right-0 z-40 overflow-hidden bg-[url('./assets/images/bg_img.png')]   uppercase shadow-[-7px_8px_30px_0px_#00000033] ">
         {wishlistData.length >= 1 ? (
           <section className="p-5">
-            <div className="item-center relative flex justify-between border-b-[1.5px] border-[#0B0B0B] pb-12">
+            <div className="item-center relative flex justify-between border-b border-[#0B0B0B] pb-12">
               <div className="">
-                <p className="text-[36px]/[36px] font-[500] uppercase">
+                <p className="text-4xl font-[500] uppercase">
                   wishlist
                 </p>
-                <p className="absolute left-[160px] top-[-5px] text-[16px]/[16px] font-[500] text-[#000000]">
+                <p className="absolute left-[160px] -top-1 text-sm font-[500] text-[#000000]">
                   ({wishlistData.length})
                 </p>
               </div>

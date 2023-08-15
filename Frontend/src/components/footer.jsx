@@ -11,9 +11,9 @@ import Twitter from "../assets/icons/Twitter.svg";
 
 const Footer = () => {
   return (
-    <div className="grid grid-cols-4 max-lg:grid-cols-2 border-[#0B0B0B] border-t  max-md:block w-full mt-20" >
+    <div className="grid grid-cols-4 max-lg:grid-cols-2 border-[#0B0B0B] border-t  w-full mt-20" >
       <div className="uppercase border-b border-[#0B0B0B]">
-        <p className="w-[512px] font-semibold text-[20px]/[32px] mt-2 ml-3  max-lg:w-[70vw] ">
+        <p className="w-[512px] max-md:w-full font-semibold text-[20px]/[32px] mt-2 ml-3  ">
           /subsricb<em className="font-normal" >e</em > to our n<em className="font-normal" >e</em >wslett<em className="font-normal" >e</em >r & be th
           <em className="font-normal" >e</em > first to he<em className="font-normal" >a</em >r ab<em className="font-normal" >o</em >ut new pr<em className="font-normal" >o</em >ducts
           & <em className="font-normal" >e</em >vents
@@ -21,11 +21,11 @@ const Footer = () => {
       </div>
       <div className="border-b border-[#0B0B0B]"></div>
 
-      <div className="border-b border-l border-[#0B0B0B] relative max-lg:border-l-[0px]">
+      <div className="border-b border-l border-[#0B0B0B] relative max-lg:border-l-0">
         <input
           type="email"
           placeholder="ENTER YOUR EMAIL ADDRESS"
-          className="w-full absolute bottom-[10px] outline-0 font-semibold text-[12px]/[16px] text-[#3C3C3C] px-5 bg-[transparent]"
+          className="w-full absolute bottom-3 outline-0 font-semibold text-[12px]/[16px] text-[#3C3C3C] px-5 bg-[transparent]"
         />
       </div>
       <div className="border-b border-l border-[#0B0B0B] h-[96px] uppercase relative pl-5">
@@ -47,16 +47,16 @@ const Footer = () => {
         </div>
     
       </div>
-      <div className="h-[392px] relative border-b border-[#0B0B0B]">
-    <img src={footer_logo} alt="footer_logo" className="ml-5 absolute top-[30px] cursor-pointer" />
-          <p className="w-[256px] ml-5 absolute top-[30%] font-[500] text-sm text-[#0B0B0B] uppercase max-lg:w-[100%]">
+      <div className="relative border-b border-[#0B0B0B]">
+    <img src={footer_logo} alt="footer_logo" className="ml-5 absolute top-8 cursor-pointer" />
+          <p className="w-[90%] ml-5 absolute top-[30%] font-[500] text-sm text-[#0B0B0B] uppercase max-lg:w-[100%]">
             AISI offers a carefully curated collection of stylish and versatile
             clothing pieces that are designed to elevate everyday looks. From
             comfortable essentials to trendy statement pieces, Aisi aims to
             empower individuals to express their unique sense of style with
             confidence.
           </p>
-          <div className="flex items-center gap-5 absolute bottom-[14px] ml-5">
+          <div className="flex items-center gap-5 absolute bottom-4 ml-5">
             <img src={facebook} alt="facebook" className="cursor-pointer" />
             <img src={Instagram} alt="Instagram" className="cursor-pointer" />
             <img src={Reddit} alt="Reddit" className="cursor-pointer" />
@@ -65,23 +65,22 @@ const Footer = () => {
      
       </div>
 
-      <div className="uppercase border-l border-b border-[#0B0B0B] h-[392px] relative max-lg:border-l-[0px] ">
+      <div className="uppercase border-l border-b border-[#0B0B0B] h-[392px] relative max-lg:border-l-0 ">
         <p className="font-normal text-sm text-[#0b0b0b77] ml-5 absolute top-[30%]">
           <em>/ site navigation</em>
         </p>
-        <ul className="list-none font-semibold text-base text-[#0B0B0B] absolute bottom-[14px] ml-5">
+        <ul className="list-none font-semibold text-base text-[#0B0B0B] absolute bottom-4 ml-5">
           <li className="my-2 cursor-pointer">homepage</li>
           <li className="my-2 cursor-pointer">shop</li>
           <li className="my-2 cursor-pointer">collections</li>
-          <li className="my-2 cursor-pointer">homepage</li>
           <li className="cursor-pointer">contact</li>
         </ul>
       </div>
-      <div className="uppercase border-l border-[#0B0B0B] border-b h-[392px] relative">
+      <div className="uppercase border-l border-[#0B0B0B] border-b  relative">
         <p className="font-normal text-sm text-[#0B0B0B] ml-5 absolute top-[30%]">
           <em>/ customer care</em>
         </p>
-        <ul className="list-none font-semibold text-base text-[#0B0B0B] absolute bottom-[14px] ml-5">
+        <ul className="list-none font-semibold text-base text-[#0B0B0B] absolute bottom-4 ml-5">
           <li className="my-2 cursor-pointer">shipping & payment</li>
           <li className="my-2 cursor-pointer">refund & return policy</li>
           <li className="cursor-pointer">care instructions</li>

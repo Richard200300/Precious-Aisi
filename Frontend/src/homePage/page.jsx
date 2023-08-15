@@ -17,7 +17,7 @@ const Page = () => {
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
   const { data } = useFetch("http://localhost:5000/api/products/?limit=10");
@@ -35,15 +35,15 @@ const Page = () => {
           <Membership />
           <Exclusive />
           <section>
-            <div className="relative my-20  border-t-[1.5px]  border-[#0B0B0B]">
+            <div className="relative my-20  border-t  border-[#0B0B0B]">
               <img
                 src={back_to_top}
                 alt="back_to_top"
                 className="absolute -top-5 right-[10%] cursor-pointer"
-onClick={()=> {
-  handleScrollToTop()
-}}
-/>
+                onClick={() => {
+                  handleScrollToTop();
+                }}
+              />
             </div>
           </section>
         </section>

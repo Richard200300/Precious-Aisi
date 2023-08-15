@@ -14,16 +14,16 @@ const Search = ({ setHideFilter,hideFilter, setDynamicUrl }) => {
 
   return (
     <section className="mt-8 flex items-center border-y border-[#000000]">
-      <div className="flex h-10 px-5  cursor-pointer items-center justify-center border-r border-[#000000] uppercase text-[#0B0B0B]">
+      <div className="flex h-10 px-5 max-md:px-3  cursor-pointer items-center justify-center border-r border-[#000000] uppercase text-[#0B0B0B]">
         <div
-          className="flex justify-center gap-1"
+          className="flex justify-center gap-1 "
           onClick={() => setHideFilter((prevFilter) => !prevFilter)}
         >
-          <p className="text-sm font-medium">{hideFilter ? "hide filter": "show filter"}</p>
+          <p className="text-sm max-md:text-xs max-md:font-bold font-medium">{hideFilter ? "hide filter": "show filter"}</p>
           <img src={hidden_filter} alt="hidden_filter" />
         </div>
       </div>
-      <div className="relative w-full basis-[79%] items-center gap-3 uppercase text-[#0B0B0B]">
+      <div className="relative max-lg:basis-[69%] max-xl:basis-[70%] max-md:basis-[60] basis-[79%] items-center gap-3 uppercase text-[#0B0B0B]">
         <input
           type="text"
           placeholder="SEARCH"

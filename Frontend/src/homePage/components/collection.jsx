@@ -38,8 +38,8 @@ const align = fashionData.length < 4 ? "items-start mt-10" : "items-center"
 
   return (
 
-    <section className="flex items-start  border-b border-[#0B0B0B] max-xl:block ">
-      <section className="basis-[47%] border-r border-[#0B0B0B] pb-9 max-xl:border-r-0 ">
+    <section className="flex items-start  border-b border-[#0B0B0B]  ">
+      <section className="basis-[47%] border-r border-[#0B0B0B] pb-9 ">
         <article className="mt-7 w-96 text-5xl uppercase   text-[#0B0B0B] max-md:w-[100%]">
           <p>
             /n<em>e</em>w 2<em>0</em>23
@@ -99,7 +99,7 @@ const align = fashionData.length < 4 ? "items-start mt-10" : "items-center"
           <img src={collection_arrow} alt="collection_arrow" />
         </article>
       </section>
-      <section className={`flex basis-[53%]  justify-between max-md:flex-col-reverse ${align}`}>
+      <section className={`flex basis-[53%]  justify-between max-xl:flex-col-reverse ${align}`}>
         <div className="">
           {fashionData.map((item, index) => (
             <section

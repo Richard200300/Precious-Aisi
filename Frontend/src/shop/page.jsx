@@ -14,7 +14,6 @@ const Page = () => {
   useEffect(() => {
     window.scrollTo(0, 0); 
   }, []);
-const [real, setReal] = useState()
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -32,12 +31,13 @@ const [real, setReal] = useState()
             setHideFilter={setHideFilter}
             hideFilter={hideFilter}
           />
-          <div className="flex justify-start">
-            <section className={`flex flex-row-reverse ${align}  gap-10 justify-start`}>
-            <div className=""></div>
+          <div className="flex justify-center">
 
-              <div className="flex justify-start">
-                <div className="relative flex items-center justify-start">
+          <div className="flex justify-start">
+            <section className={`flex flex-row-reverse ${align}  gap-10 justify-center`}>
+
+              <div className="">
+                <div className="relative flex items-center justify-center">
                  
                   {data && <ShopProducts hideFilter={hideFilter} data={data} /> }
                 </div>
@@ -57,6 +57,8 @@ const [real, setReal] = useState()
             </section>
           
           </div>
+          </div>
+
           <section className="">
               <div className="relative mt-16 border-t border-[#0B0B0B]">
                 <img
