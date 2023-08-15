@@ -7,13 +7,9 @@ import down from "../assets/icons/down.svg";
 import flag from "../assets/icons/flag.svg";
 import { Link } from "react-router-dom";
 
-
-
-
-
-const Header = ({setHideCart}) => {
+const Header = ({ setHideCart, setHideWish, cartData, wishlistData }) => {
   return (
-    <div className=" pt-[10px] uppercase sticky top-[-66px] z-10 bg-[url('./assets/images/bg_img.png')]">
+    <div className=" sticky top-[-66px] z-10 bg-[url('./assets/images/bg_img.png')] pt-[10px] uppercase">
       <section className=" flex justify-end py-[10px]">
         <div className="flex gap-6">
           <div className="flex w-[139px] cursor-pointer items-center gap-3 border border-[#0B0B0B] px-[8px] py-[5px] font-[500] text-[#0B0B0B] ">
@@ -34,8 +30,7 @@ const Header = ({setHideCart}) => {
         <div className="flex">
           <div className="flex w-[174px] cursor-pointer justify-center px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#0B0B0B] text-[#]  max-lg:hidden">
             <Link to="/shop">
-            <p className="">shop</p>
-            
+              <p className="">shop</p>
             </Link>
           </div>
           <div
@@ -51,23 +46,37 @@ const Header = ({setHideCart}) => {
           </div>
         </div>
         <Link to="/homepage">
-        <img src={header_logo} alt="header_logo" className="ml-5 cursor-pointer" />
-        
+          <img
+            src={header_logo}
+            alt="header_logo"
+            className="ml-5 cursor-pointer"
+          />
         </Link>
         <article className="flex">
           <div
+                        onClick={() => {
+                          setHideWish((prev) => !prev);
+                          setHideCart(false);
+                        }}
             className="flex w-[174px] cursor-pointer justify-center border-x
            border-[#0B0B0B] px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#0B0B0B] max-lg:hidden "
           >
-            <p className="">
-              wishlist <span className="">(0)</span>
+            <p
+              className=""
+
+            >
+              wishlist <span className="">({wishlistData.length})</span>
             </p>
           </div>
-          <div className="flex min-w-[172px] cursor-pointer justify-center border-r border-[#0B0B0B] px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#0B0B0B] text-[#]  max-lg:hidden" onClick={()=> {
-            setHideCart(prev =>  !prev)
-          }}>
-            <p className="">
-              cart <span className="">(0)</span>
+          <div
+            className="flex min-w-[172px] cursor-pointer justify-center border-r border-[#0B0B0B] px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#0B0B0B] text-[#]  max-lg:hidden"
+            
+          >
+            <p className="" onClick={() => {
+              setHideCart((prev) => !prev);
+              setHideWish(false)
+            }}>
+              cart <span className="">({cartData.length})</span>
             </p>
           </div>
           <div className="flex min-w-[108px] cursor-pointer justify-center border-[#0B0B0B] px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#0B0B0B] text-[#] max-lg:border-l max-md:w-full ">

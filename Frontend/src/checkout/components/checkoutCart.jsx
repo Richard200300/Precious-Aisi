@@ -1,34 +1,52 @@
 import React, { useState, useEffect } from "react";
-import cancel_cart from "../assets/icons/cancel_cart.svg";
-import cartIcon from "../assets/icons/cart-icon.svg";
-import down from "../assets/icons/down.svg";
-import { Link } from "react-router-dom";
-const Cart = ({ setHideCart, cartData }) => {
+import cancel_cart from "../../assets/icons/cancel_cart.svg";
+import collection_img_2 from "../../assets/images/collection_img_2.png";
+import cartIcon from "../../assets/icons/cart-icon.svg";
+import down from "../../assets/icons/down.svg";
+import up from "../../assets/icons/up_arrow.svg"
+const CheckoutCart = () => {
+  const cartData = [
 
+    {
+      name: "OVERGROWTH CONVERTIBLE PANTS",
+      price: 135000,
+      size: 1,
+      color: "greenish brown",
+      qty: 1,
+      img: collection_img_2,
+    },
+    {
+      name: "OVERGROWTH CONVERTIBLE PANTS",
+      price: 135000,
+      size: 1,
+      color: "greenish brown",
+      qty: 1,
+      img: collection_img_2,
+    },
+
+  ];
   return (
-    <div className="nt-5 sticky right-7 top-[45px] z-20 ml-auto">
-      <div className="absolute  right-0 z-40  overflow-hidden bg-[url('./assets/images/bg_img.png')]   uppercase shadow-[-7px_8px_30px_0px_#00000033] ">
+    <div className="ml-auto ">
+      <div className="  overflow-hidden">
         {cartData.length >= 1 ? (
-          <section className="p-5">
-            <div className="item-center relative flex justify-between border-b-[1.5px] border-[#0B0B0B] pb-12">
+          <section className="pb-5 px-5 pt-2">
+            <div className="item-center relative flex justify-between border-b border-[#0B0B0B] pb-8">
               <div className="">
                 <p className="text-[36px]/[36px] font-[500] uppercase">
-                  <span className="font-400 mr-1">/</span>y
-                  <em className="font-[400]">o</em>ur c
-                  <em className="font-[400]">a</em>rt
+                 /your cart
                 </p>
                 <p className="absolute left-[215px] top-[-8px] text-[16px]/[16px] font-[500] text-[#000000]">
                   ({cartData.length})
                 </p>
               </div>
               <div
-                className="cursor-pointer"
-                onClick={() => setHideCart(false)}
+                className="cursor-pointer "
               >
-                <img src={cancel_cart} alt="cancel_cart" />{" "}
+                <p className="border-b border-[#0B0B0B] text-sm font-bold pb-1 w-10 text-center">edit</p>
+                
               </div>
             </div>
-<div className="max-h-[40vh] overflow-y-scroll">
+<div className="max-h-[50vh] overflow-y-scroll">
 
 
             {cartData.map((data, index) => {
@@ -79,42 +97,28 @@ const Cart = ({ setHideCart, cartData }) => {
               <p>Total</p>
               <p>270,000 NGN</p>
             </div>
-            <div className="mt-3 flex items-center justify-between border-b-[0.5px] border-b-[#0B0B0B] pb-4  text-[13px]/[20px] font-[500]">
+            <div className="mt-3 flex items-center justify-between border-b border-b-[#0B0B0B] pb-4  text-[13px]/[20px] font-[500]">
               <p>shipping</p>
               <p>calculated at checkout</p>
             </div>
-<Link to="/checkout">
-            <div className="mt-5 flex cursor-pointer items-center justify-center rounded-[7px] bg-[#0B0B0B] py-3 text-[14px]/[20px] font-[600] text-[#FFFFFF]"
-            
-            onClick={()=> {
-              setHideCart(false)
-            }}
-            >
-              checkout
+            <div className="flex w-full justify-between border-b border-[#0B0B0B]">
+              <input type="text" className="outline-0 bg-transparent py-10 px-2 font-medium text-sm" placeholder="HAVE A PROMO CODE"/>
+              <div className="flex items-center gap-1 cursor-pointer">
+                <p className="text-xs font-bold">apply</p>
+                <img src={up} alt="up"/>
+              </div>
             </div>
-            </Link>
+          
           </section>
         ) : (
           <section className="relative w-96 px-3 py-6 ">
             <div className="">
-            <div className="item-center relative flex justify-between border-b-[1.5px] border-[#0B0B0B] pb-8">
-              <div className="">
-                <p className="text-[36px]/[36px] font-[500] uppercase">
-                 /your cart
-                </p>
-                <p className="absolute left-[209px] top-[-5px] text-[16px]/[16px] font-[500] text-[#000000]">
-                  ({cartData.length})
-                </p>
-              </div>
               <div
-                className="cursor-pointer"
-                onClick={() => setHideCart(false)}
+                className="absolute left-3 top-7  cursor-pointer"
               >
                 <img src={cancel_cart} alt="cancel_cart" />{" "}
               </div>
-            </div>
-           
-              <img src={cartIcon} alt="cartIcon" className="ml-5 mt-8" />
+              <img src={cartIcon} alt="cartIcon" className="ml-5 mt-20" />
               <div className="mt-4 flex w-full cursor-pointer items-center justify-center bg-[#525050] py-2 text-sm font-semibold text-[#FFFEF5]">
                 cart is empty
               </div>
@@ -126,4 +130,4 @@ const Cart = ({ setHideCart, cartData }) => {
   );
 };
 
-export default Cart;
+export default CheckoutCart;

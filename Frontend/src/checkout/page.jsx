@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Contact from "./components/contact";
 import Shipping from "./components/shipping";
 import Payment from "./components/Payment";
+import CheckoutCart from "./components/checkoutCart";
+
 const Page = () => {
   const [checkoutPage, setCheckoutPage] = useState(0);
   const checkoutName = ["contact", "Shipping", "Payment"];
@@ -18,21 +20,38 @@ const Page = () => {
   }
   console.log(checkoutPage);
   return (
+    <form>
     <div className=" h-full p-0 uppercase">
-      <section className="flex items-start justify-between">
+      <section className="flex items-start justify-between mt-5">
         <article className="basis-[58%] ">
-          <div className=" text-[16px]/[16px] font-[500] italic">
+          <div className="sticky top-9 bg-[url('./assets/images/bg_img.png')]">
+
+        
+          <div className=" text-[16px]/[16px] font-[500] italic mt-5">
             <div className="flex w-full items-center justify-between text-[#0b0b0b77]">
               {checkoutName.map((data, index) => {
+                  const stepStyle = {
+                    color: checkoutPage === index ? "#000000" : "#0b0b0b77"
+                  };
                 return (
-                  <div key={index}>
+                  <div key={index} style={stepStyle}>
                     (0{index + 1}/{data})
                   </div>
                 );
               })}
             </div>
           </div>
+          <div className="sticky top-10">
+            
+          </div>
+          <div className="my-4 w-full h-1 bg-[#B0B0B0] mt-10">
+            <div style={{
+              width: checkoutPage === 0 ? "33.3%" : checkoutPage === 1 ? "66.6%" : "100%"
+            }} className="w-[33.3%] h-full bg-[#0B0B0B] transition-all duration-200"></div>
+          </div>
+          </div>
         <p className="font-[500] text-[24px]/[24px] my-9">/{checkOutTitle[checkoutPage]}  </p>
+
 
           {displayCheckoutPage()}
 
@@ -72,9 +91,12 @@ const Page = () => {
             </div>
           </div>
         </article>
-        <article className="basis-[35%] bg-green-600">your cart</article>
+        <article className="basis-[35%] ">
+<CheckoutCart />
+        </article>
       </section>
     </div>
+    </form>
   );
 };
 

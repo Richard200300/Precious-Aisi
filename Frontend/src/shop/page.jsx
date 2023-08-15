@@ -6,7 +6,6 @@ import Filter from "./component/filter";
 import Search from "./component/search";
 import useFetch from "../components/useFetch";
 import Loading from "../components/loading";
-
 const Page = () => {
   const [dynamicUrl, setDynamicUrl] = useState("products");
   const [hideFilter, setHideFilter] = useState(true);
@@ -15,14 +14,13 @@ const Page = () => {
   useEffect(() => {
     window.scrollTo(0, 0); 
   }, []);
-
+const [real, setReal] = useState()
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
   };
-  
   const align = data?.products?.length <= 3 ? "items-start" : ""
   return (
     <div className="h-full p-0">
@@ -34,18 +32,20 @@ const Page = () => {
             setHideFilter={setHideFilter}
             hideFilter={hideFilter}
           />
-          <div className="">
-            <section className={`flex flex-row-reverse ${align}  gap-10`}>
-              <div className="flex items-center justify-center">
-                <div className="relative flex items-center justify-center">
-                  {data && (
-                    <ShopProducts hideFilter={hideFilter} data={data} />
-                  )}
+          <div className="flex justify-start">
+            <section className={`flex flex-row-reverse ${align}  gap-10 justify-start`}>
+            <div className=""></div>
+
+              <div className="flex justify-start">
+                <div className="relative flex items-center justify-start">
+                 
+                  {data && <ShopProducts hideFilter={hideFilter} data={data} /> }
                 </div>
               </div>
               <div>
+
                 {hideFilter && (
-                  <div className="sticky top-10">
+                  <div className="sticky top-10 ">
                     <Filter setDynamicUrl={setDynamicUrl} />
                   </div>
                 )}
@@ -55,8 +55,10 @@ const Page = () => {
                 </div>
               </div>
             </section>
-            <section className="">
-              <div className="relative mt-28 border-t border-[#0B0B0B]">
+          
+          </div>
+          <section className="">
+              <div className="relative mt-16 border-t border-[#0B0B0B]">
                 <img
                   src={backToTop}
                   alt="back_to_top"
@@ -67,7 +69,6 @@ const Page = () => {
                 />
               </div>
             </section>
-          </div>
         </section>
       ) : (
         <Loading />

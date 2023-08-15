@@ -13,12 +13,15 @@ const Page = () => {
   const [hideCart, ShowCart] = useState(false);
 
   const apiUrl = `http://localhost:5000/api/products/${id}`;
-  const { data} = useFetch(apiUrl);
+  const {data} = useFetch(apiUrl);
 
    const name = 'you may also like'
    useEffect(() => {
     window.scrollTo(0, 0); 
   }, []);
+
+
+
   return (
     <div className=" h-full p-0">
      {data ? <div>
