@@ -3,9 +3,11 @@ import down from "../../assets/icons/down.svg";
 import hidden_filter from "../../assets/icons/hidden_filter.svg";
 import search from "../../assets/icons/search.svg";
 
-const Search = ({ setHideFilter,hideFilter, setDynamicUrl }) => {
+const Search = ({ setHideFilter, hideFilter, setDynamicUrl }) => {
+  // State for the search input value
   const [name, setName] = useState("");
 
+  // Handle Enter key press in search input
   function handleKeyPress(event) {
     if (event.key === "Enter") {
       setDynamicUrl(`products/?name=${name}`);
@@ -14,16 +16,19 @@ const Search = ({ setHideFilter,hideFilter, setDynamicUrl }) => {
 
   return (
     <section className="mt-8 flex items-center border-y border-[#000000]">
-      <div className="flex h-10 px-5 max-md:px-3  cursor-pointer items-center justify-center border-r border-[#000000] uppercase text-[#0B0B0B]">
-        <div
-          className="flex justify-center gap-1 "
-          onClick={() => setHideFilter((prevFilter) => !prevFilter)}
-        >
-          <p className="text-sm max-md:text-xs max-md:font-bold font-medium">{hideFilter ? "hide filter": "show filter"}</p>
-          <img src={hidden_filter} alt="hidden_filter" />
-        </div>
+      {/* Hide/Show Filter */}
+      <div
+        onClick={() => setHideFilter((prevFilter) => !prevFilter)}
+        className="flex h-10 cursor-pointer items-center justify-center gap-1 border-r border-[#000000] px-5 uppercase text-[#0B0B0B] max-md:px-3"
+      >
+        <p className="text-sm font-medium max-md:text-xs max-md:font-bold">
+          {hideFilter ? "hide filter" : "show filter"}
+        </p>
+        <img src={hidden_filter} alt="hidden_filter" />
       </div>
-      <div className="relative max-lg:basis-[69%] max-xl:basis-[70%] max-md:basis-[60] basis-[79%] items-center gap-3 uppercase text-[#0B0B0B]">
+
+      {/* Search input */}
+      <div className="relative basis-[79%] items-center gap-3 uppercase text-[#0B0B0B] max-xl:basis-[70%] max-lg:basis-[69%] max-md:basis-[60]">
         <input
           type="text"
           placeholder="SEARCH"
@@ -36,12 +41,12 @@ const Search = ({ setHideFilter,hideFilter, setDynamicUrl }) => {
           alt="search"
           className="absolute bottom-1 right-5 cursor-pointer"
         />
-      </div>{" "}
-      <div className="flex h-10 px-5 cursor-pointer items-center justify-center border-l border-[#000000] uppercase text-[#0B0B0B]">
-        <div className="flex justify-center gap-1">
-          <p className="text-sm font-medium">sort by</p>
-          <img src={down} alt="down" />
-        </div>
+      </div>
+
+      {/* Sort by */}
+      <div className="flex h-10 cursor-pointer items-center justify-center gap-1 border-l border-[#000000] px-5 uppercase text-[#0B0B0B]">
+        <p className="text-sm font-medium">sort by</p>
+        <img src={down} alt="down" />
       </div>
     </section>
   );

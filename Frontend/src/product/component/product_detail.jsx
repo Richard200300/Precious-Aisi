@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import ProductInformation from "./productInformation";
+import down from "../../assets/icons/down.svg";
+
 const Product_detail = ({ data }) => {
   // States
   const [selectedImage, setSelectedImage] = useState(null);
@@ -13,27 +14,17 @@ const Product_detail = ({ data }) => {
     }
   }, [data]);
 
-  // Handle thumbnail click
-  const handleThumbnailClick = (img) => {
-    setSelectedImage(img);
-  };
-
-  // Handle size selection
-  const handleSizeSelect = (size) => {
-    setSelectedSize(size);
-  };
-
   // Handle adding to cart
   const handleAddToCart = () => {
     if (selectedSize) {
       setErrorMessage("Item has been added to cart successfully.");
-      console.log("Item has been added to cart successfully.")
+      console.log("Item has been added to cart successfully.");
       setTimeout(() => {
         setErrorMessage("");
       }, 3000);
     } else {
       setErrorMessage("Please select a size before adding to cart.");
-      console.log("Please select a size before adding to cart.")
+      console.log("Please select a size before adding to cart.");
 
       setTimeout(() => {
         setErrorMessage("");
@@ -43,38 +34,27 @@ const Product_detail = ({ data }) => {
 
   return (
     <section className="product_container mb-20 mt-10 h-full border-y border-[#0B0B0B]">
-      {/* Error message */}
-      <section className="sticky top-10 z-50">
-        {/* i have removed the alert system */}
-      </section>
-
       {/* Product details */}
       {data ? (
         <section className="flex items-start gap-5">
           {/* Thumbnail images */}
           <section className="gap flex basis-7 flex-col justify-center py-5">
             {data.images?.map((img, index) => (
-              <article
-                className="bg relative m-[auto] my-3 flex h-20 items-center justify-center max-md:h-full max-md:w-full"
+              <div
                 key={index}
-                onClick={() => handleThumbnailClick(img)}
+                onClick={() => setSelectedImage(img)}
+                className={` mb-5 flex h-20 w-24 cursor-pointer items-center justify-center bg-contain bg-no-repeat ${
+                  img === selectedImage
+                    ? `bg-[url('./assets/images/frames.png')]`
+                    : ""
+                }`}
               >
-                <div
-                  className={` flex h-20 w-24 cursor-pointer items-center justify-center bg-contain bg-no-repeat  ${
-                    img === selectedImage
-                      ? `bg-[url('./assets/images/frames.png')]`
-                      : ""
-                  }`}
-                >
-                  <div className="mr-5 h-16 w-14 overflow-hidden ">
-                    <img
-                      src={`https://asis.blob.core.windows.net/asisimages/${img}`}
-                      alt="collection_img"
-                      className="h-full w-full object-cover object-top "
-                    />
-                  </div>
-                </div>
-              </article>
+                <img
+                  src={`https://asis.blob.core.windows.net/asisimages/${img}`}
+                  alt="collection_img"
+                  className="mr-5 h-16 w-14 object-cover object-top "
+                />
+              </div>
             ))}
           </section>
 
@@ -89,12 +69,75 @@ const Product_detail = ({ data }) => {
           </section>
 
           {/* Product information */}
-          <ProductInformation
-            data={data}
-            handleSizeSelect={handleSizeSelect}
-            handleAddToCart={handleAddToCart}
-            selectedSize={selectedSize}
-          />
+
+          <section className="basis-[40%] py-5">
+            <p className="mb-9 text-3xl font-medium text-[#0B0B0B]">
+              /{data.name}
+            </p>
+            {/* Sizes */}
+            <section className="mb-5 flex flex-wrap gap-x-5 gap-y-3">
+              {data.countInStock?.map((sizeData, index) => (
+                <div
+                  key={index}
+                  onClick={() => setSelectedSize(sizeData.size)}
+                  className={`flex h-10 w-24 items-center justify-center border text-xs font-medium uppercase ${
+                    selectedSize === sizeData.size
+                      ? "cursor-pointer border-[#0B0B0B] text-[#0b0b0b]"
+                      : " border-[#C4C4C4] text-[#C4C4C4]"
+                  }`}
+                >
+                  {sizeData.size}
+                </div>
+              ))}
+            </section>
+
+            {/* Additional details */}
+            <section className="">
+              {/* Time */}
+              <article className="flex items-center justify-between text-base font-semibold">
+                <p className="uppercase text-[#0B0B0B]">time</p>
+                <p className="text-[#17A500]">12:01:43:20</p>
+              </article>
+
+              {/* Description */}
+              <p className="my-9 text-sm font-medium text-[#0B0B0B]">
+                {data.description}
+              </p>
+
+              {/* Add to cart */}
+
+              <button
+                className={`my-3 w-full  bg-[#0B0B0B] py-4 text-center text-xs font-semibold uppercase ${
+                  selectedSize
+                    ? "cursor-pointer text-[#FFFFFF]"
+                    : " cursor-default text-[#C4C4C4]"
+                }`}
+                onClick={() => {
+                  handleAddToCart();
+                }}
+              >
+                Add to cart -{data.price?.toLocaleString()} NGN
+              </button>
+
+              {/* Add to wishlist */}
+              <button className="mb-3 w-full cursor-pointer border border-[#0B0B0B] py-4 text-center text-xs font-semibold uppercase text-[#0B0B0B]">
+                add to wishlist
+              </button>
+
+              {/* Accordion */}
+              <section className="border-y border-[#0B0B0B] text-sm uppercase text-[#0B0B0B] ">
+                <article className="flex cursor-pointer items-center justify-between border-b border-[#0B0B0B] py-2">
+                  <p>product details</p>
+                  <img src={down} alt="down" />
+                </article>
+
+                <article className="flex cursor-pointer items-center justify-between py-2">
+                  <p>size guild</p>
+                  <img src={down} alt="down" />
+                </article>
+              </section>
+            </section>
+          </section>
         </section>
       ) : (
         <section>product not found</section>

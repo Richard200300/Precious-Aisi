@@ -40,7 +40,7 @@ const align = fashionData.length < 4 ? "items-start mt-10" : "items-center"
 
     <section className="flex items-start  border-b border-[#0B0B0B]  ">
       <section className="basis-[47%] border-r border-[#0B0B0B] pb-9 ">
-        <article className="mt-7 w-96 text-5xl uppercase   text-[#0B0B0B] max-md:w-[100%]">
+        <article className="mt-7 w-96 text-5xl uppercase   text-[#0B0B0B] ">
           <p>
             /n<em>e</em>w 2<em>0</em>23
           </p>

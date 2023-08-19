@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from "react";
+
+// Component for individual filter items
 const FilterItem = ({ item, activeItem, setActiveItem }) => {
   const isActive = activeItem === item;
 
+  // Handle filter item click
   const handleItemClick = () => {
     setActiveItem(isActive ? null : item);
   };
 
   return (
     <label className="my-2 flex cursor-pointer items-center gap-2" htmlFor={`checkbox-${item}`}>
-    <input
-      type="checkbox"
-      className="cursor-pointer checkbox"
-      checked={isActive}
-      onChange={handleItemClick}
-      id={`checkbox-${item}`}
-    />
-    <p
-      className={`w-48 text-xs font-medium text-[#0B0B0B] ${
-        isActive ? "cursor-pointer" : ""
-      }`}
-    >
-      {item}
-    </p>
-  </label>
+      <input
+        type="checkbox"
+        className="cursor-pointer checkbox"
+        checked={isActive}
+        onChange={handleItemClick}
+        id={`checkbox-${item}`}
+      />
+      <p
+        className={`w-48 text-xs font-medium text-[#0B0B0B] ${isActive ? "cursor-pointer" : ""}`}
+      >
+        {item}
+      </p>
+    </label>
   );
 };
 
+// Main Filter component
 const Filter = ({ setDynamicUrl }) => {
   const [activeItem, setActiveItem] = useState(null); 
   const miniData = [
@@ -53,6 +55,7 @@ const Filter = ({ setDynamicUrl }) => {
     },
   ];
 
+  // Update dynamic URL on active filter change
   useEffect(() => {
     if (activeItem) {
       const query = `category=${activeItem}`;
@@ -62,6 +65,7 @@ const Filter = ({ setDynamicUrl }) => {
 
   return (
     <section className="filter_component mt-5 left-0 overflow-y-scroll filter w-72 border border-[#0B0B0B] px-5 pb-5 pt-10">
+      {/* MiniData filters */}
       <div>
         <p className="text-sm px-1 font-semibold uppercase text-[#000000]">
           <em
@@ -78,21 +82,17 @@ const Filter = ({ setDynamicUrl }) => {
           {miniData.map((data) => (
             <li
               key={data}
-              className={`my-2 p-1 rounded cursor-pointer ${
-                activeItem === data ? "text-[#000000] italic" : ""
-              }`}
+              className={`my-2 p-1 rounded cursor-pointer ${activeItem === data ? "text-[#000000] italic" : ""}`}
             >
-              <span
-                onClick={() =>
-                  setActiveItem(activeItem === data ? null : data)
-                }
-              >
+              <span onClick={() => setActiveItem(activeItem === data ? null : data)}>
                 {data}
               </span>
             </li>
           ))}
         </ul>
       </div>
+      
+      {/* Other filter categories */}
       {filterData.map(({ type, items }) => (
         <div key={type} className="border-b border-[#878787] pb-5 uppercase">
           <p className="mt-5 text-sm font-semibold uppercase text-[#000000]">

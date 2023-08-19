@@ -1,119 +1,118 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import cancel_cart from "../assets/icons/cancel_cart.svg";
 import cartIcon from "../assets/icons/cart-icon.svg";
 import down from "../assets/icons/down.svg";
 import { Link } from "react-router-dom";
-const Cart = ({ setHideCart, cartData }) => {
 
+const Cart = ({ setHideCart, cartData }) => {
   return (
-    <div className="nt-5 sticky right-7 top-[45px] z-20 ml-auto">
-      <div className="absolute  right-0 z-40  overflow-hidden bg-[url('./assets/images/bg_img.png')]   uppercase shadow-[-7px_8px_30px_0px_#00000033] ">
+    <div className="sticky right-7 top-10 z-20 ml-auto">
+      <div className="absolute right-0  overflow-hidden bg-[url('./assets/images/bg_img.png')] uppercase shadow-[-7px_8px_30px_0px_#00000033]">
         {cartData.length >= 1 ? (
+          // Cart with items
           <section className="p-5">
-            <div className="item-center relative flex justify-between border-b-[1.5px] border-[#0B0B0B] pb-12">
-              <div className="">
-                <p className="text-[36px]/[36px] font-[500] uppercase">
-                  <span className="font-400 mr-1">/</span>y
-                  <em className="font-[400]">o</em>ur c
-                  <em className="font-[400]">a</em>rt
+            <div className="item-center relative flex justify-between border-b border-[#0B0B0B] pb-10">
+              <div>
+                <p className="text-4xl font-medium uppercase">
+                  <span className="mr-1 font-normal">/</span>your cart
                 </p>
-                <p className="absolute left-[215px] top-[-8px] text-[16px]/[16px] font-[500] text-[#000000]">
+                <p className="absolute -top-2 left-52 text-base font-medium text-[#000000]">
                   ({cartData.length})
                 </p>
               </div>
-              <div
+              {/* close cart component */}
+              <img
+                src={cancel_cart}
+                alt="cancel_cart"
                 className="cursor-pointer"
                 onClick={() => setHideCart(false)}
-              >
-                <img src={cancel_cart} alt="cancel_cart" />{" "}
-              </div>
+              />
             </div>
-<div className="max-h-[40vh] overflow-y-scroll">
-
-
-            {cartData.map((data, index) => {
-              return (
-                <div key={index}>
-                  <div className="my-5 flex items-start justify-between gap-5  border-b-[1.5px] border-[#0B0B0B] pb-4 ">
-                    <div className=" h-[154px] w-[116px]">
+            <div className="max-h-[40vh] overflow-y-scroll">
+              {cartData.map((data, index) => {
+                return (
+                  <section key={index}>
+                    <div className="my-5 flex items-start justify-between gap-5 border-b border-[#0B0B0B] pb-4">
+                      {/* cart image */}
                       <img
                         src={data.img}
                         alt="collection_img_2"
-                        className="h-full w-full object-cover object-top"
+                        className="h-36 w-[116px] object-cover object-top"
                       />
-                    </div>
-                    <div className="w-[70%]">
-                      <div className="flex items-start justify-between  border-b-[0.5px] border-b-[#0B0B0B] pb-2">
-                        <div className="">
-                          <p className="w-[212px] text-[14px]/[20px] font-[700] text-[#0B0B0B]">{data.name}</p>
-                          <p className="mt-2 text-[11px]/[20px] font-[600] text-[#000000]">
-                            {data.price} NGN
-                          </p>
-                        </div>
-                        <div className="">
+                      {/* right hand of the product detail of the cart */}
+                      <section className="w-4/5">
+                        {/* Product details */}
+                        <div className="flex items-start justify-between border-b border-b-[#0B0B0B] pb-2">
+                          <div>
+                            <p className="w-[212px] text-sm font-bold text-[#0B0B0B]">
+                              {data.name}
+                            </p>
+                            <p className="mt-2 text-xs font-semibold text-[#000000]">
+                              {data.price?.toLocaleString()} NGN
+                            </p>
+                          </div>
+                          {/* remove item from cart */}
                           <img
                             src={cancel_cart}
                             alt="cancel_cart"
-                            className="w-[20px] cursor-pointer"
+                            className="w-5 cursor-pointer"
                           />
                         </div>
-                      </div>
-                      <div className=" mt-3 flex w-full items-start justify-between">
-                        <div className="text-[11px]/[20px] font-[600] text-[#000000]">
-                          <p className="">{data.color}</p>
-                          <p className="">size: {data.size}</p>
+                        <div className="mt-3 flex w-full items-start justify-between text-xs font-semibold text-[#000000]">
+                          <div>
+                            <p>{data.color}</p>
+                            <p>size: {data.size}</p>
+                          </div>
+                          <div className="flex items-center gap-1 ">
+                            <p> q.ty:{data.qty}</p>
+                            <img src={down} alt="down" />
+                          </div>
                         </div>
-                        <div className=" flex items-center gap-1 text-[11px]/[16px] font-[600] text-[#0B0B0B]">
-                          <p> q.ty:{data.qty}</p>
-                          <img src={down} alt="down" />
-                        </div>
-                      </div>
+                      </section>
                     </div>
-                  </div>
-                </div>
-              );
-            })}
+                  </section>
+                );
+              })}
             </div>
-
-            <div className="mt-4 flex items-center justify-between text-[14px]/[20px] font-[700]">
+            {/* total calculation  */}
+            <div className="mt-4 flex items-center justify-between text-sm font-bold">
               <p>Total</p>
               <p>270,000 NGN</p>
             </div>
-            <div className="mt-3 flex items-center justify-between border-b-[0.5px] border-b-[#0B0B0B] pb-4  text-[13px]/[20px] font-[500]">
+            <div className="mt-3 flex items-center justify-between border-b border-b-[#0B0B0B] pb-4 text-[13px]/[20px] font-medium">
               <p>shipping</p>
               <p>calculated at checkout</p>
             </div>
-<Link to="/checkout">
-            <div className="mt-5 flex cursor-pointer items-center justify-center rounded-[7px] bg-[#0B0B0B] py-3 text-[14px]/[20px] font-[600] text-[#FFFFFF]"
-            
-            onClick={()=> {
-              setHideCart(false)
-            }}
-            >
-              checkout
-            </div>
+            {/* Link to checkout */}
+            <Link to="/checkout">
+              <button
+                className="mt-5 flex cursor-pointer w-full uppercase items-center justify-center rounded-[7px] bg-[#0B0B0B] py-3 text-sm font-semibold text-[#FFFFFF]"
+                onClick={() => {
+                  setHideCart(false);
+                }}
+              >
+                checkout
+              </button>
             </Link>
           </section>
         ) : (
-          <section className="relative w-96 px-3 py-6 ">
-            <div className="">
-            <div className="item-center relative flex justify-between border-b-[1.5px] border-[#0B0B0B] pb-8">
-              <div className="">
-                <p className="text-[36px]/[36px] font-[500] uppercase">
-                 /your cart
-                </p>
-                <p className="absolute left-[209px] top-[-5px] text-[16px]/[16px] font-[500] text-[#000000]">
-                  ({cartData.length})
-                </p>
+          // Empty cart
+          <section className="relative w-96 px-3 py-6">
+            <div>
+              <div className="item-center relative flex justify-between border-b border-[#0B0B0B] pb-8">
+                <div >
+                  <p className="text-4xl font-medium uppercase">/your cart</p>
+                  <p className="absolute -top-1 left-52 text-base font-medium text-[#000000]">
+                    ({cartData.length})
+                  </p>
+                </div>
+                <img
+                  src={cancel_cart}
+                  alt="cancel_cart"
+                  className="cursor-pointer"
+                  onClick={() => setHideCart(false)}
+                />
               </div>
-              <div
-                className="cursor-pointer"
-                onClick={() => setHideCart(false)}
-              >
-                <img src={cancel_cart} alt="cancel_cart" />{" "}
-              </div>
-            </div>
-           
               <img src={cartIcon} alt="cartIcon" className="ml-5 mt-8" />
               <div className="mt-4 flex w-full cursor-pointer items-center justify-center bg-[#525050] py-2 text-sm font-semibold text-[#FFFEF5]">
                 cart is empty
