@@ -8,7 +8,6 @@ import collection_img_2 from "../../assets/images/collection_img_2.png";
 import left_button from "../../assets/icons/left_button.svg";
 import right_button from "../../assets/icons/right_button.svg";
 
-
 const Collection = () => {
   const fashionData = [
     {
@@ -16,43 +15,39 @@ const Collection = () => {
       description:
         "Introducing the Aisi High Fashion Alte Hoodie: A striking blend of contemporary style and bold expression. Crafted with meticulous a...",
       releaseDate: "13th, Feburary, 2023",
-    },  {
+    },
+    {
       title: "ASIS HIGH FASHION ALTE HOODIE",
       description:
         "Introducing the Aisi High Fashion Alte Hoodie: A striking blend of contemporary style and bold expression. Crafted with meticulous a...",
       releaseDate: "13th, Feburary, 2023",
-    },  {
+    },
+    {
       title: "ASIS HIGH FASHION ALTE HOODIE",
       description:
         "Introducing the Aisi High Fashion Alte Hoodie: A striking blend of contemporary style and bold expression. Crafted with meticulous a...",
       releaseDate: "13th, Feburary, 2023",
-    },  {
+    },
+    {
       title: "ASIS HIGH FASHION ALTE HOODIE",
       description:
         "Introducing the Aisi High Fashion Alte Hoodie: A striking blend of contemporary style and bold expression. Crafted with meticulous a...",
       releaseDate: "13th, Feburary, 2023",
-    }, 
-    
+    },
   ];
-const align = fashionData.length < 4 ? "items-start mt-10" : "items-center"
+  const align = fashionData.length < 4 ? "items-start mt-10" : "items-center";
 
   return (
-
     <section className="flex items-start  border-b border-[#0B0B0B]  ">
       <section className="basis-[47%] border-r border-[#0B0B0B] pb-9 ">
-        <article className="mt-7 w-96 text-5xl uppercase   text-[#0B0B0B] ">
-          <p>
-            /n<em>e</em>w 2<em>0</em>23
-          </p>
-          <p className="text-right">
-            s<em>u</em>mm<em>e</em>r{" "}
-          </p>
-          <p>
-            c<em>o</em>llection{" "}
-          </p>
-        </article>
+          <article className="mt-7 w-80 text-5xl  uppercase text-[#0B0B0B] ">
+           <p>/new 2023 </p> 
+           <p className="text-right">summer</p>
+           <p>collection</p>
+            
+          </article>
         <article>
-          <p className="ml-[auto] mr-5 mt-7 w-[25rem] text-sm font-semibold max-xl:w-full">
+          <p className="ml-auto mr-5 mt-7 w-[25rem] text-sm font-semibold max-xl:w-full">
             Asis offers a carefully curated collection of stylish and versatile
             clothing pieces that are designed to elevate everyday looks. From
             comfortable essentials to trendy statement pieces, Aisi aims to
@@ -60,46 +55,27 @@ const align = fashionData.length < 4 ? "items-start mt-10" : "items-center"
             confidence.
           </p>
         </article>
-        <article className="relative m-[auto] flex justify-center items-center mt-7 h-72 w-[30rem] max-md:w-full max-md:h-full">
-          <div className="flex h-56 w-[28rem] mb-10  items-center justify-center max-md:w-[100%] max-md:h-full">
-            <img
+        <div className="flex justify-center relative pb-10 mt-5 mx-auto max-w-[30rem] ">
+        <img
               src={collection_img}
               alt="collection_img"
-              className=" mt-2 h-full w-full object-cover object-top"
+              className="  bg-contain p-3 max-w-[32rem] h-64 overflow-hidden bg-no-repeat bg-[url('./assets/images/collection_frame.png')]  object-cover object-top"
             />
-          </div>
-          <img
-            src={img_border}
-            alt="img_border"
-            className="absolute bottom-8 right-0"
-          />
-          <img
-            src={img_border}
-            alt="img_border"
-            className="absolute top-0 rotate-180 left-0"
-          />
-          <img
-            src={img_border}
-            alt="img_border"
-            className="absolute right-0 top-0 rotate-[270deg]"
-          />
-          <img
-            src={img_border}
-            alt="img_border"
-            className="absolute bottom-8 rotate-90 left-0"
-          />
-          <p className="absolute bottom-0 left-0 text-xs font-semibold uppercase">
-            <em>[asis x nike]</em>
-          </p>
-        </article>
-        <article className="ml-auto mr-5 flex w-40  cursor-pointer items-center justify-center gap-2 border border-[#0B0B0B] py-2">
+          
+            <em className="bottom-0  left-0 absolute text-xs font-semibold uppercase">[asis x nike]</em>
+        </div>
+
+           
+        <div className="ml-auto mr-5 flex w-40  cursor-pointer items-center justify-center gap-2 border border-[#0B0B0B] py-2">
           <p className="text-base font-medium uppercase text-[#0B0B0B]">
             shop now
           </p>
           <img src={collection_arrow} alt="collection_arrow" />
-        </article>
+        </div>
       </section>
-      <section className={`flex basis-[53%]  justify-between max-xl:flex-col-reverse ${align}`}>
+      <section
+        className={`flex basis-[53%]  justify-between max-xl:flex-col-reverse ${align}`}
+      >
         <div className="">
           {fashionData.map((item, index) => (
             <section
@@ -113,7 +89,9 @@ const align = fashionData.length < 4 ? "items-start mt-10" : "items-center"
                 <p className="py-2 text-[10px]/[10.5px] ">{item.description}</p>
                 <div className="flex justify-between">
                   <div className="flex items-center gap-1">
-                    <p className="text-[7px]/[7px] font-medium">- Released on</p>
+                    <p className="text-[7px]/[7px] font-medium">
+                      - Released on
+                    </p>
                     <img src={collection_ball} alt="collection_ball" />
                     <p></p>
                     <p className="text-[7px]/[7px] font-medium text-[#00000080]">
@@ -147,13 +125,9 @@ const align = fashionData.length < 4 ? "items-start mt-10" : "items-center"
             />
 
             <div className="flex items-center gap-2">
-              <p className="text-base font-medium text-[#000000]">
-                1
-              </p>
+              <p className="text-base font-medium text-[#000000]">1</p>
               <div className="h-1 w-20 rounded-sm bg-[#B0B0B0]"></div>
-              <p className="text-base font-medium text-[#000000]">
-                4
-              </p>
+              <p className="text-base font-medium text-[#000000]">4</p>
             </div>
             <img
               src={right_button}
